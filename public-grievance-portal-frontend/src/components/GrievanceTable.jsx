@@ -81,7 +81,7 @@ export default function GrievanceTable() {
                 <span
                   className={`px-2 py-1 text-xs rounded-full font-medium ${
                     g.status === "Pending"
-                      ? "bg-gray-200 text-gray-800"
+                      ? "bg-red-100 text-red-500"
                       : "bg-blue-100 text-blue-500"
                   }`}
                 >

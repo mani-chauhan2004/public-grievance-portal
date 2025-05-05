@@ -1,7 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import StatCard from "../components/StatCard";
-import { MessageCircle, AlertTriangle, ShieldCheck, ChartNoAxesCombined } from "lucide-react";
+import { MessageCircle, AlertTriangle, ShieldCheck, ChartNoAxesCombined, Copyright } from "lucide-react";
 import GrievanceTable from "../components/GrievanceTable";
 
 export default function AdminDashboard() {
@@ -19,6 +19,9 @@ export default function AdminDashboard() {
         <div className="px-24">
             <GrievanceTable/>
         </div>
+        <footer className="flex items-center gap-1 justify-center mt-4">
+            <Copyright size={16} /> 2025 Grievance Gateway Admin Portal. All rights reserved.
+        </footer>
       </div>
     </div>
   );
