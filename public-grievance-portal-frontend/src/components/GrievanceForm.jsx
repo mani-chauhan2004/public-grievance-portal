@@ -3,9 +3,9 @@ import { Upload, Phone } from "lucide-react";
 const GrievanceForm = () => {
     return (
         <div className="flex justify-center items-start min-h-screen bg-gray-100 px-24 py-4 gap-4">
-            <div className="flex w-full bg-white rounded-lg shadow-lg">
+            <div className="flex w-full flex-col-reverse lg:flex-row bg-white rounded-lg shadow-lg">
                 {/* Form Section */}
-                <form className="w-2/3 p-6">
+                <form className="w-full lg:w-2/3 p-6">
                     <h2 className="text-2xl font-bold mb-4">File Your Grievance</h2>
 
                     <div className="mb-4">
@@ -46,7 +46,7 @@ const GrievanceForm = () => {
                 </form>
 
                 {/* Guidelines Section */}
-                <div className="w-1/3 p-6 bg-gray-50 border-l">
+                <div className="w-full lg:w-1/3 p-6 bg-gray-50 border-l rounded-r-lg">
                 <h3 className="text-lg font-semibold mb-4">Filing Guidelines</h3>
                 <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
                     <li>Provide a clear and concise subject that describes your grievance</li>
