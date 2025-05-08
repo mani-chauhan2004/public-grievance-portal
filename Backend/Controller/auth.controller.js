@@ -2,7 +2,7 @@ import { User } from "../Models/userModel.js";
 
 export const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, area, role} = req.body;
 
         // Validate if any of the fields are empty
         if ([name, email, password].some((field) => !field || field.trim() === "")) {
@@ -16,7 +16,7 @@ export const registerUser = async (req, res) => {
         }
 
         // Create and save the new user
-        const user = new User({ name, email, password });
+        const user = new User({ name, email, password, area, role });
         await user.save();
 
         const createdUser = await User.findById(user._id).select("-password -refreshToken");
@@ -51,7 +51,7 @@ export const loginUser = async (req, res) => {
 
         if (!email || !password) {
             return res.status(400).json({
-                message: "Email and password is require"
+                message: "Email and password is require "
             })
         }
 
@@ -83,7 +83,7 @@ export const loginUser = async (req, res) => {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                userType: user.userType,
+                role: user.role,
 
             }
         })
