@@ -6,7 +6,7 @@ import GrievanceTable from "../components/GrievanceTable";
 
 export default function AdminDashboard() {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-primary-gray">
       {/* <Sidebar /> */}
       <div className="flex-1">
         <Topbar />

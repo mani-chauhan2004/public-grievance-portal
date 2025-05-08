@@ -41,28 +41,28 @@ const grievances = [
 
 export default function GrievanceTable() {
   return (
-    <div className="bg-white rounded-xl p-6 mt-8 shadow">
+    <div className="bg-primary-primary-white rounded-xl p-6 mt-8 shadow">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Recent Grievances</h3>
         <div className="flex gap-2">
           <input
             type="text"
             placeholder="Search grievances..."
-            className="border border-gray-300 rounded px-3 py-1 text-sm"
+            className="border border-inputbox-border rounded px-3 py-1 text-sm"
           />
-          <select className="border border-gray-300 rounded px-3 py-1 text-sm">
+          <select className="border border-inputbox-border rounded px-3 py-1 text-sm">
             <option>All Departments</option>
             <option>Public Works</option>
             <option>Healthcare</option>
           </select>
-          <button className="bg-blue-500 text-white px-3 py-1 rounded flex items-center gap-1 text-sm">
+          <button className="bg-button-secondary text-primary-white px-3 py-1 rounded flex items-center gap-1 text-sm">
             <Download size={16} /> Export
           </button>
         </div>
       </div>
 
       <table className="w-full text-sm">
-        <thead className="bg-gray-100 text-gray-600 text-left">
+        <thead className="bg-primary-gray text-font-normal text-left">
           <tr>
             <th className="py-2 px-3">ID</th>
             <th className="py-2 px-3">Subject</th>
@@ -82,26 +82,26 @@ export default function GrievanceTable() {
                   className={`px-2 py-1 text-xs rounded-full font-medium ${
                     g.status === "Pending"
                       ? "bg-red-100 text-red-500"
-                      : "bg-blue-100 text-blue-500"
+                      : "bg-blue-100 text-button-bg-button-secondary"
                   }`}
                 >
                   {g.status}
                 </span>
               </td>
               <td className="px-3 py-2 flex gap-3">
-                <Edit size={16} className="cursor-pointer text-gray-600" />
-                <Eye size={16} className="cursor-pointer text-gray-600" />
+                <Edit size={16} className="cursor-pointer text-font-normal" />
+                <Eye size={16} className="cursor-pointer text-font-normal" />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className="flex justify-between items-center text-sm text-gray-600 mt-4">
+      <div className="flex justify-between items-center text-sm text-font-normal mt-4">
         <p>Showing 1-6 of 156 entries</p>
         <div className="flex gap-2">
           <button className="px-3 py-1 border rounded">Previous</button>
-          <button className="px-3 py-1 border rounded bg-blue-500 text-white">1</button>
+          <button className="px-3 py-1 border rounded bg-button-secondary text-primary-white">1</button>
           <button className="px-3 py-1 border rounded">2</button>
           <button className="px-3 py-1 border rounded">3</button>
           <button className="px-3 py-1 border rounded">Next</button>
