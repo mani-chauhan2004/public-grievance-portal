@@ -4,4 +4,4 @@ const departmentSchema = new mongoose.Schema({
     description: String
 });
 
-export const department = mongoose.model("department", departmentSchema)
+export const Department = mongoose.model("Department", departmentSchema)

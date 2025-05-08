@@ -9,4 +9,4 @@ const grievanceSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 });
 
-export const grievance = mongoose.model("grievance", grievanceSchema)
+export const Grievance = mongoose.model("Grievance", grievanceSchema)

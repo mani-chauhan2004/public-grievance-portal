@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -44,7 +45,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 
 userSchema.methods.generateAccessToken = async function () {
     return jwt.sign({
-        _id: this._id,
+        id: this._id,
         name: this.name,
         email: this.email,
         area: this.area,
@@ -61,7 +62,7 @@ userSchema.methods.generateAccessToken = async function () {
 
 userSchema.methods.generateRefreshToken = async function () {
     return jwt.sign({
-        _id: this._id
+        id: this._id
     },
         process.env.REFRESH_TOKEN_SECRET,
         {
