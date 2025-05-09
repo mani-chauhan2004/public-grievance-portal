@@ -40,7 +40,7 @@ const GrievanceForm = () => {
                         </div>
                     </div>
 
-                    <button className="w-full bg-inputbox-ring-inputbox-focus text-primary-white p-2 rounded hover:bg-button-secondary">
+                    <button className="w-full bg-button-secondary ring-inputbox-focus text-primary-white p-2 rounded hover:bg-button-hover">
                         Submit Grievance
                     </button>
                 </form>
