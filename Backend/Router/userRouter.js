@@ -1,5 +1,5 @@
 import express from 'express'
-import { loginUser, logoutUser, registerUser } from '../Controller/auth.controller.js';
+import { loginUser, logoutUser, registerUser, getCitizen } from '../Controller/auth.controller.js';
 import { requireAuth, requireRole } from '../middleware/auth.middleware.js';
 
 
@@ -9,5 +9,8 @@ authRouter.post("/signup", registerUser)
 authRouter.post("/login", loginUser)
 authRouter.post("/logout", logoutUser)
 authRouter.get('/dashboard', requireAuth, requireRole('admin'));
+
+
+authRouter.get('/me', requireAuth, getCitizen);
 
 export default authRouter

@@ -35,9 +35,9 @@ const LoginPage = () => {
       const response = await login(email, password);
 
       if (response.user.role === "admin") {
-        navigate("/admin/dashboard");
+        navigate("/admin");
       } else {
-        navigate("/citizen/submit-grievance");
+        navigate("/citizen");
       }
     } catch (error) {
       setErrorMessage(error.response.data.message);

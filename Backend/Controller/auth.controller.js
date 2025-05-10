@@ -107,3 +107,12 @@ export const logoutUser = async (req, res) => {
         return res.status(500).json({ message: "Error during logout" });
     }
 }
+
+//////////////////temporary
+export const getCitizen = async (req, res) => {
+    try {
+       
+    } catch (error) {
+        
+    }
+}

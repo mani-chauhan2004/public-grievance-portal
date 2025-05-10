@@ -21,6 +21,14 @@ function App() {
 
           {/* protected routes */}
           <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/admin/dashboard"
             element={
               <ProtectedRoute>
@@ -28,7 +36,23 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          {/* ///// */}
+          <Route
+            path="/citizen"
+            element = {
+              <ProtectedRoute >
+                <AdminDashboard/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/citizen/dashboard"
+            element = {
+              <ProtectedRoute >
+                <AdminDashboard/>
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/citizen/submit-grievance"
             element = {
