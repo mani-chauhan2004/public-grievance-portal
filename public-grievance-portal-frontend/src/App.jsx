@@ -11,7 +11,6 @@ import AdminHomePage from "./pages/AdminHomePage";
 
 function App() {
   return (
-    // <SignupPage/>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
@@ -22,48 +21,53 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
 
           {/* protected routes */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminHomePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          {/* ///// */}
-          <Route
-            path="/citizen"
-            element = {
-              <ProtectedRoute >
-                <CitizenHomePage/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/citizen/dashboard"
-            element = {
-              <ProtectedRoute >
-                <AdminDashboard/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/citizen/submit-grievance"
-            element = {
-              <ProtectedRoute >
-                <SubmitGrievancePanel />
-              </ProtectedRoute>
-            }
-          />
-
+          {JSON.parse(localStorage.getItem("user")).role === "admin" ? (
+            <>
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminHomePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          ) : (
+            <>
+              <Route
+                path="/citizen"
+                element={
+                  <ProtectedRoute>
+                    <CitizenHomePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/citizen/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/citizen/submit-grievance"
+                element={
+                  <ProtectedRoute>
+                    <SubmitGrievancePanel />
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          )}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
