@@ -4,12 +4,12 @@ import StatCard from "../components/StatCard";
 import { MessageCircle, AlertTriangle, ShieldCheck, ChartNoAxesCombined, Copyright } from "lucide-react";
 import GrievanceTable from "../components/GrievanceTable";
 
-export default function AdminDashboard() {
+export default function CitizenDashboard() {
   return (
     <div className="flex min-h-screen bg-primary-gray">
       {/* <Sidebar /> */}
       <div className="flex-1">
-        <Topbar name={"Admin Dashboard"} />
+        <Topbar name={"Citizen Dashboard"} />
         <main className="py-6 px-24 grid gap-6 md:grid-cols-4">
           <StatCard title="Total Grievances" value="1543" icon={MessageCircle} color="yellow" />
           <StatCard title="Pending Grievances" value="273" icon={AlertTriangle} color="red" />

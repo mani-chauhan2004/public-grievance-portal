@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CitizenHomePage from "./pages/CitizenHomePage";
 import AdminHomePage from "./pages/AdminHomePage";
+import CitizenDashboard from "./pages/CitizenDashboard";
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
                 path="/citizen/dashboard"
                 element={
                   <ProtectedRoute>
-                    <AdminDashboard />
+                    <CitizenDashboard />
                   </ProtectedRoute>
                 }
               />

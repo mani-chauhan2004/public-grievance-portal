@@ -1,45 +1,29 @@
 import { Eye, Edit, Download } from "lucide-react";
+import api from "../apis/authApi";
+import { useEffect, useState } from "react";
 
-const grievances = [
-  {
-    id: "#GR-2025-001",
-    subject: "Road Maintenance Issue",
-    department: "Public Works",
-    status: "Pending",
-  },
-  {
-    id: "#GR-2025-002",
-    subject: "Hospital Services Complaint",
-    department: "Healthcare",
-    status: "In Progress",
-  },
-  {
-    id: "#GR-2025-001",
-    subject: "Road Maintenance Issue",
-    department: "Public Works",
-    status: "Pending",
-  },
-  {
-    id: "#GR-2025-002",
-    subject: "Hospital Services Complaint",
-    department: "Healthcare",
-    status: "In Progress",
-  },
-  {
-    id: "#GR-2025-001",
-    subject: "Road Maintenance Issue",
-    department: "Public Works",
-    status: "Pending",
-  },
-  {
-    id: "#GR-2025-002",
-    subject: "Hospital Services Complaint",
-    department: "Healthcare",
-    status: "In Progress",
-  },
-];
+
 
 export default function GrievanceTable() {
+
+  const [grievances, setGrievances] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const res = await api.get("/grievance/my");
+      console.log(res.data);
+      setGrievances(res.data);
+      
+    } catch (error) {
+      console.log(error?.message || "Error in getting grievance data");
+    }
+  };
+
+  fetchData();
+}, []);
+
+
   return (
     <div className="bg-primary-primary-white rounded-xl p-6 mt-8 shadow">
       <div className="flex justify-between items-center mb-4">
@@ -66,7 +50,7 @@ export default function GrievanceTable() {
           <tr>
             <th className="py-2 px-3">ID</th>
             <th className="py-2 px-3">Subject</th>
-            <th className="py-2 px-3">Department (AI)</th>
+            <th className="py-2 px-3">Description (AI)</th>
             <th className="py-2 px-3">Status</th>
             <th className="py-2 px-3">Actions</th>
           </tr>
@@ -74,9 +58,9 @@ export default function GrievanceTable() {
         <tbody>
           {grievances.map((g, i) => (
             <tr key={i} className="border-b">
-              <td className="px-3 py-2">{g.id}</td>
-              <td className="px-3 py-2">{g.subject}</td>
-              <td className="px-3 py-2">{g.department}</td>
+              <td className="px-3 py-2">{g._id}</td>
+              <td className="px-3 py-2">{g.department.description}</td>
+              <td className="px-3 py-2">{g.description}</td>
               <td className="px-3 py-2">
                 <span
                   className={`px-2 py-1 text-xs rounded-full font-medium ${
