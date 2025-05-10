@@ -6,6 +6,8 @@ import SignupPage from "./pages/SignupPage";
 import { AuthProvider } from "./contexts/AuthProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CitizenHomePage from "./pages/CitizenHomePage";
+import AdminHomePage from "./pages/AdminHomePage";
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
             path="/admin"
             element={
               <ProtectedRoute>
-                <AdminDashboard />
+                <AdminHomePage />
               </ProtectedRoute>
             }
           />
@@ -41,7 +43,7 @@ function App() {
             path="/citizen"
             element = {
               <ProtectedRoute >
-                <AdminDashboard/>
+                <CitizenHomePage/>
               </ProtectedRoute>
             }
           />
