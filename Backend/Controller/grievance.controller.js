@@ -2,10 +2,10 @@ import {Grievance} from '../Models/grievanceModel.js'
 
 export const submitGrievance = async (req, res) => {
     try {
-        const { title, description } = req.body
+        const { subject, description } = req.body
 
         const grievance = new Grievance({
-            title,
+            subject,
             description,
             department: req.department._id,
             user: req.user.id

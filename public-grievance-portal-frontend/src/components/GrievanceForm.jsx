@@ -3,33 +3,28 @@ import api from "../apis/authApi";
 import { Upload, Phone } from "lucide-react";
 
 const GrievanceForm = () => {
+
   const [subject, setSubject] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState("");   //useless
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("subject", subject);
-    formData.append("department", department);
-    formData.append("description", description);
-    if (file) formData.append("file", file); // if your backend accepts files
-
+    const form = {
+      subject,
+      description,
+    }
     try {
-      const response = await api.post("/grievance/submit", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await api.post("/grievance/submit", form );
       setMessage("Grievance submitted successfully!");
       setSubject("");
       setDepartment("");
       setDescription("");
-      setFile(null);
-    } catch (error) {
+      // setFile(null);
+    } 
+    catch (error) {
       console.error(error);
       setMessage(error.response?.data?.message || "Submission failed.");
     }
@@ -87,7 +82,7 @@ const GrievanceForm = () => {
             ></textarea>
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block text-sm font-medium text-label-text mb-1">
               Supporting Documents
             </label>
@@ -99,7 +94,7 @@ const GrievanceForm = () => {
                 className="text-sm"
               />
             </div>
-          </div>
+          </div> */}
 
           <button
             type="submit"
