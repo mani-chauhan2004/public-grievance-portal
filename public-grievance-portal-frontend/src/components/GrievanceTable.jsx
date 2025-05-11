@@ -4,26 +4,7 @@ import { useEffect, useState } from "react";
 
 
 
-export default function GrievanceTable() {
-
-  const [grievances, setGrievances] = useState([]);
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const request = JSON.parse(localStorage.getItem("user")).role == "citizen"? "/grievance/my": JSON.parse(localStorage.getItem("user")).role == "admin"? "/grievance/all": "/grievance/department";
-      const res = await api.get(request);
-      console.log(res.data);
-      setGrievances(res.data);
-      
-    } catch (error) {
-      console.log(error?.message || "Error in getting grievance data");
-    }
-  };
-
-  fetchData();
-}, []);
-
+export default function GrievanceTable({grievances=[]}) {
 
   return (
     <div className="bg-primary-primary-white rounded-xl p-6 mt-8 shadow">

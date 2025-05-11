@@ -7,7 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  // const [role, setRole] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,7 +76,7 @@ const LoginPage = () => {
               </div>
             )}
             <form className="space-y-6" onSubmit={handleLogin}>
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-label-text">
                   Role
                 </label>
@@ -89,7 +89,7 @@ const LoginPage = () => {
                   <option value="officer">Officer</option>
                   <option value="citizen">Citizen</option>
                 </select>
-              </div>
+              </div> */}
 
               <div>
                 <label className="block text-sm font-medium text-label-text">
@@ -131,7 +131,7 @@ const LoginPage = () => {
 
               <button
                 type="submit"
-                className="w-full bg-button-normal text-white py-2 px-4 rounded-md hover:bg-button-hover transition"
+                className="cursor-pointer w-full bg-button-normal text-white py-2 px-4 rounded-md hover:bg-button-hover transition"
                 disabled={isLoading}
               >
                 {isLoading ? "Logging In..." : "Login In"}

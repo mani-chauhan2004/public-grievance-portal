@@ -11,9 +11,10 @@ import AdminHomePage from "./pages/AdminHomePage";
 import CitizenDashboard from "./pages/CitizenDashboard";
 import DepartmentDashboard from "./pages/DepartmentDashboard";
 import DepartmentHomePage from "./pages/DeaprtmentHomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  const userRole = JSON.parse(localStorage.getItem("user")).role;
+  const userRole = JSON.parse(localStorage.getItem("user"))?.role;
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -91,6 +92,12 @@ function App() {
               />
             </>
           )}
+          <Route
+            path="/*"
+            element={
+                <NotFoundPage />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
