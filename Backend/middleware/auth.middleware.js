@@ -5,6 +5,7 @@ dotenv.config();
 
 // Middleware to verify token and attach user
 export const requireAuth = async (req, res, next) => {
+  
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -37,7 +38,6 @@ export const requireRole = (role) => {
     if (req.user.role !== role) {
       return res.status(403).json({ error: "Forbidden: Access denied" });
     }
-    
     next();
   };
 };

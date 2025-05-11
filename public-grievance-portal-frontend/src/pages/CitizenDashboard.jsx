@@ -47,7 +47,7 @@ export default function CitizenDashboard() {
           <StatCard title="Accuracy" value={`${(resolvedCount/(resolvedCount+pendingCount)*100)}%`} icon={ChartNoAxesCombined} color="blue" />
         </main>
         <div className="px-24">
-            <GrievanceTable grievances={grievances}/>
+            <GrievanceTable grievances={grievances} user={"citizen"}/>
         </div>
         <footer className="flex items-center gap-1 justify-center mt-4">
             <Copyright size={16} /> 2025 Grievance Gateway Admin Portal. All rights reserved.

@@ -3,11 +3,63 @@ import api from "../apis/authApi";
 import { useEffect, useState } from "react";
 
 
+export default function GrievanceTable({grievances=[], user}) {
+  const [edit, setEdit] = useState(false);
+  const [selectedGrievance, setSelectedGrievance] = useState({});
+  const [status, setStatus] = useState("pending");
 
-export default function GrievanceTable({grievances=[]}) {
+  const handleSubmit = async () => {
+    e.preventDefault();
+    try {
+      const res = await api.put(`/grievance/${selectedGrievance._id}/status`, {
+        status
+      } );
+      console.log(res);
+      setEdit(false);
+      setSelectedGrievance({});
+      setStatus("pending");
+    }catch(error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="bg-primary-primary-white rounded-xl p-6 mt-8 shadow">
+      {
+        edit && <form className="absolute w-4/12 h-4/12 bg-primary-gray left-4/12">
+          <div className="bg-primary-white">
+            <h2>
+              Grievance ID:
+            </h2>
+            <p>
+              {selectedGrievance._id}
+            </p>
+          </div>
+          <div>
+            <h2>
+              Grievance Description:
+            </h2>
+            <p>
+              {selectedGrievance.description}
+            </p>
+          </div>
+          <div>
+            <h2>
+              Set Status:
+            </h2>
+              <select name="status" id="status"
+                onChange={(e) => {
+                  setStatus(e.target.value);
+                }}
+                value={status}
+              >
+                <option value="pending">Pending</option>
+                <option value="resolved">Resolved</option>
+              </select>
+          </div>
+          <button disabled={status === selectedGrievance.status} className="cursor-pointer flex gap-1 bg-button-primary px-4 py-2 text-lg font-semibold items-center bg-button-secondary text-primary-white rounded-lg" onClick={handleSubmit}>Submit</button>
+        </form>
+      }
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Recent Grievances</h3>
         <div className="flex gap-2">
@@ -55,7 +107,11 @@ export default function GrievanceTable({grievances=[]}) {
                 </span>
               </td>
               <td className="px-3 py-2 flex gap-3">
-                <Edit size={16} className="cursor-pointer text-font-normal" />
+                {user !== "citizen" && <Edit size={16} className="cursor-pointer text-font-normal" onClick={() => {
+                  setEdit(!edit);
+                  console.log(g);
+                  setSelectedGrievance(g);
+                }}/>}
                 <Eye size={16} className="cursor-pointer text-font-normal" />
               </td>
             </tr>

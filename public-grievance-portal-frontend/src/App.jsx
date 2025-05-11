@@ -92,12 +92,12 @@ function App() {
               />
             </>
           )}
-          <Route
+          {/* <Route
             path="/*"
             element={
                 <NotFoundPage />
             }
-          />
+          /> */}
         </Routes>
       </BrowserRouter>
     </AuthProvider>
