@@ -24,6 +24,8 @@ connectDB();
 
 app.use('/api/auth', authRouter)
 app.use('/api/grievance', grievanceRouter)
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
 
