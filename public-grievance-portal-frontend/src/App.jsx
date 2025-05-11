@@ -9,8 +9,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CitizenHomePage from "./pages/CitizenHomePage";
 import AdminHomePage from "./pages/AdminHomePage";
 import CitizenDashboard from "./pages/CitizenDashboard";
+import DepartmentDashboard from "./pages/DepartmentDashboard";
+import DepartmentHomePage from "./pages/DeaprtmentHomePage";
 
 function App() {
+  const userRole = JSON.parse(localStorage.getItem("user")).role;
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -22,7 +25,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
 
           {/* protected routes */}
-          {JSON.parse(localStorage.getItem("user")).role === "admin" ? (
+          {userRole === "admin" ? (
             <>
               <Route
                 path="/admin"
@@ -41,7 +44,7 @@ function App() {
                 }
               />
             </>
-          ) : (
+          ) : userRole === "citizen"? (
             <>
               <Route
                 path="/citizen"
@@ -64,6 +67,25 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <SubmitGrievancePanel />
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          ) : (
+            <>
+              <Route
+                path="/officer"
+                element={
+                  <ProtectedRoute>
+                    <DepartmentHomePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/officer/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <DepartmentDashboard />
                   </ProtectedRoute>
                 }
               />

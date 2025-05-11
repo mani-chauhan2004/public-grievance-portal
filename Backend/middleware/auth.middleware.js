@@ -37,7 +37,7 @@ export const requireRole = (role) => {
     if (req.user.role !== role) {
       return res.status(403).json({ error: "Forbidden: Access denied" });
     }
-
+    
     next();
   };
 };

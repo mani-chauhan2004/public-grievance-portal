@@ -11,7 +11,8 @@ export default function GrievanceTable() {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const res = await api.get("/grievance/my");
+      const request = JSON.parse(localStorage.getItem("user")).role == "citizen"? "/grievance/my": JSON.parse(localStorage.getItem("user")).role == "admin"? "/grievance/all": "/grievance/department";
+      const res = await api.get(request);
       console.log(res.data);
       setGrievances(res.data);
       
@@ -59,7 +60,7 @@ useEffect(() => {
           {grievances.map((g, i) => (
             <tr key={i} className="border-b">
               <td className="px-3 py-2">{g._id}</td>
-              <td className="px-3 py-2">{g.department.description}</td>
+              <td className="px-3 py-2">{g.department.description || g.department.name || "None"}</td>
               <td className="px-3 py-2">{g.description}</td>
               <td className="px-3 py-2">
                 <span

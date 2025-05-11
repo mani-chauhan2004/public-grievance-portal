@@ -36,7 +36,11 @@ const LoginPage = () => {
 
       if (response.user.role === "admin") {
         navigate("/admin");
-      } else {
+      }
+      else if(response.user.role === "officer") {
+        navigate("/officer");
+      }
+      else {
         navigate("/citizen");
       }
     } catch (error) {
@@ -82,6 +86,7 @@ const LoginPage = () => {
                   className="mt-1 w-full border border-inputbox-border rounded-md px-3 py-2 focus:outline-none focus:ring-inputbox-focus focus:border-inputbox-focus">
                  <option value= "" disabled>Select Role</option>
                   <option value="admin">Admin</option>
+                  <option value="officer">Officer</option>
                   <option value="citizen">Citizen</option>
                 </select>
               </div>
