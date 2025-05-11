@@ -8,57 +8,68 @@ export default function GrievanceTable({grievances=[], user}) {
   const [selectedGrievance, setSelectedGrievance] = useState({});
   const [status, setStatus] = useState("pending");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await api.put(`/grievance/${selectedGrievance._id}/status`, {
-        status
-      } );
-      console.log(res);
+        status,
+      });
       setEdit(false);
       setSelectedGrievance({});
       setStatus("pending");
-    }catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="bg-primary-primary-white rounded-xl p-6 mt-8 shadow">
       {
-        edit && <form className="absolute w-4/12 h-4/12 bg-primary-gray left-4/12">
-          <div className="bg-primary-white">
-            <h2>
-              Grievance ID:
+        edit && 
+        <div className="absolute left-1/2 top-1/2 w-1/3 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg p-6 rounded-2xl border border-gray-200 z-50">
+          <form>
+            <h2 className="text-xl font-semibold text-button-secondary mb-4 border-b pb-2">
+              Update Grievance Status
             </h2>
-            <p>
-              {selectedGrievance._id}
-            </p>
-          </div>
-          <div>
-            <h2>
-              Grievance Description:
-            </h2>
-            <p>
-              {selectedGrievance.description}
-            </p>
-          </div>
-          <div>
-            <h2>
-              Set Status:
-            </h2>
-              <select name="status" id="status"
-                onChange={(e) => {
-                  setStatus(e.target.value);
-                }}
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-font-normal mb-1">Grievance ID</label>
+              <p className="text-sm bg-gray-100 rounded px-3 py-2">{selectedGrievance._id}</p>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-font-normal mb-1">Description</label>
+              <p className="text-sm bg-gray-100 rounded px-3 py-2">{selectedGrievance.description}</p>
+            </div>
+
+            <div className="mb-6">
+              <label htmlFor="status" className="block text-sm font-medium text-font-normal mb-1">Set Status</label>
+              <select
+                id="status"
+                name="status"
+                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-button-secondary"
                 value={status}
+                onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="pending">Pending</option>
                 <option value="resolved">Resolved</option>
               </select>
-          </div>
-          <button disabled={status === selectedGrievance.status} className="cursor-pointer flex gap-1 bg-button-primary px-4 py-2 text-lg font-semibold items-center bg-button-secondary text-primary-white rounded-lg" onClick={handleSubmit}>Submit</button>
-        </form>
+            </div>
+
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={status === selectedGrievance.status}
+              className={`w-full flex justify-center items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-semibold transition ${
+                status === selectedGrievance.status
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-button-secondary hover:bg-button-secondary/90"
+              }`}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       }
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold">Recent Grievances</h3>

@@ -29,13 +29,13 @@ export const requireAuth = async (req, res, next) => {
 };
 
 // Middleware to check specific role
-export const requireRole = (role) => {
+export const requireRole = (roles) => {
   return (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ error: "Unauthorized: User not authenticated" });
     }
 
-    if (req.user.role !== role) {
+    if (!roles.includes(req.user.role)) {
       return res.status(403).json({ error: "Forbidden: Access denied" });
     }
     next();

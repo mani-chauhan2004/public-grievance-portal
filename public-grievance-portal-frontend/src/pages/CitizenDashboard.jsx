@@ -44,7 +44,7 @@ export default function CitizenDashboard() {
           <StatCard title="Total Grievances" value={grievances.length} icon={MessageCircle} color="yellow" />
           <StatCard title="Pending Grievances" value={pendingCount} icon={AlertTriangle} color="red" />
           <StatCard title="Resolved Grievances" value={resolvedCount} icon={ShieldCheck} color="green" />
-          <StatCard title="Accuracy" value={`${(resolvedCount/(resolvedCount+pendingCount)*100)}%`} icon={ChartNoAxesCombined} color="blue" />
+          <StatCard title="Accuracy" value={`${((resolvedCount / (resolvedCount + pendingCount)) * 100).toString().slice(0, 5)}%`} icon={ChartNoAxesCombined} color="blue" />
         </main>
         <div className="px-24">
             <GrievanceTable grievances={grievances} user={"citizen"}/>

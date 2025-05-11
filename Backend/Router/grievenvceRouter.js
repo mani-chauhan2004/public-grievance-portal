@@ -18,10 +18,10 @@ grievanceRouter.post("/submit", requireAuth, classifyGrievance, submitGrievance)
 grievanceRouter.get("/my", requireAuth, getUserGreivance);
 
 // Officer views department grievances
-grievanceRouter.get("/department", requireAuth, requireRole("officer"), getDepartmentGrievances);
+grievanceRouter.get("/department", requireAuth, requireRole(["officer"]), getDepartmentGrievances);
 
 // Officer/Admin updates grievance status
 grievanceRouter.put("/:id/status", requireAuth, requireRole(["officer", "admin"]), updateGrievanceStatus);
-grievanceRouter.get('/all', requireAuth, requireRole("admin"), getAllGrievances)
+grievanceRouter.get('/all', requireAuth, requireRole(["admin"]), getAllGrievances)
 
 export default grievanceRouter;
