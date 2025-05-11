@@ -39,7 +39,7 @@ export default function CitizenDashboard() {
     <div className="flex min-h-screen bg-primary-gray">
       {/* <Sidebar /> */}
       <div className="flex-1">
-        <Topbar name={"Citizen Dashboard"} user={"Citizen"}/>
+        <Topbar name={"Samadhan Citizen"} user={"Citizen"}/>
         <main className="py-6 px-24 grid gap-6 md:grid-cols-4">
           <StatCard title="Total Grievances" value={grievances.length} icon={MessageCircle} color="yellow" />
           <StatCard title="Pending Grievances" value={pendingCount} icon={AlertTriangle} color="red" />

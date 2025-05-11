@@ -1,7 +1,7 @@
 import { Landmark, CircleUserRound, LogOut } from "lucide-react";
 import api from "../apis/authApi";
 import { useNavigate } from "react-router";
-export default function Topbar({name = "DashBoard", user= "No User"}) {
+export default function Topbar({name = "Samadhan", user= "No User"}) {
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {

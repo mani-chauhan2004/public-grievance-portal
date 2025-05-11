@@ -38,7 +38,7 @@ export default function AdminDashboard() {
     <div className="flex min-h-screen bg-primary-gray">
       {/* <Sidebar /> */}
       <div className="flex-1">
-        <Topbar name={"Admin Dashboard"} user={"Admin"}/>
+        <Topbar name={"Samadhan Admin"} user={"Admin"}/>
         <main className="py-6 px-24 grid gap-6 md:grid-cols-4">
           <StatCard title="Total Grievances" value={grievances.length} icon={MessageCircle} color="yellow" />
           <StatCard title="Pending Grievances" value={pendingCount} icon={AlertTriangle} color="red" />
