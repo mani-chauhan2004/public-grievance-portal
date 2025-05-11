@@ -137,7 +137,7 @@ const SignupPage = () => {
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-label-text">
                   Role
                 </label>
@@ -155,7 +155,7 @@ const SignupPage = () => {
                   <option value="officer">Officer</option>
                   <option value="admin">Admin</option>
                 </select>
-              </div>
+              </div> */}
 
               <button
                 type="submit"
