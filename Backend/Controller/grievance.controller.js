@@ -38,8 +38,6 @@ export const getDepartmentGrievances = async (req, res) => {
 export const updateGrievanceStatus = async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
-    console.log(status);
-    console.log(id);
     try {
         const updated = await Grievance.findByIdAndUpdate(id, { status }, { new: true });
         res.json({ message: "Status updated", grievance: updated });
