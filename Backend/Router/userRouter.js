@@ -8,7 +8,8 @@ const authRouter = express.Router();
 authRouter.post("/signup", registerUser)
 authRouter.post("/login", loginUser)
 authRouter.post("/logout", logoutUser)
-authRouter.get('/dashboard', requireAuth, requireRole('admin'));
+
+authRouter.get('/dashboard', requireAuth, requireRole('admin'));// this routes is used for open ai middleware
 
 
 authRouter.get('/me', requireAuth, getCitizen);
